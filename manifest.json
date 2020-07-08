@@ -1,0 +1,34 @@
+{
+	"manifest_version": 2,
+	"name": "自定义去广告",
+	"description": "学习Chrome扩展开发，去广告实践！",
+	"version": "0.0.1",
+
+	// 需要直接注入页面的JS
+	"content_scripts": 
+	[
+		{
+			"matches": ["https://tieba.baidu.com/*"],
+			// 多个JS按顺序注入
+			"js": ["tieba-remove-ad.js"],
+			// 代码注入的时间，可选值： "document_start", "document_end", or "document_idle"，最后一个表示页面空闲时，默认document_idle
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["http://*/*"],
+			"js": ["http-remove-ad.js"],
+			"css": ["http-remove-ad.css"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["https://www.baidu.com/s*"],
+			"js": ["baidusousuo-remove-ad.js"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["https://blog.csdn.net/*"],
+			"js": ["csdn-blog.js"],
+			"run_at": "document_idle"
+		}
+	]
+}
