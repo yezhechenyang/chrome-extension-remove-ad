@@ -15,7 +15,6 @@ function css(obj, attr, value) {
 		case 2:
 			//读取属性值
 			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr];
-			break;
 		case 3:
 			//设置属性
 			obj.style[attr] = value;
@@ -29,7 +28,7 @@ function css(obj, attr, value) {
 var ulItem = document.getElementById('thread_list');
 
 //帖子列表li
-var liArr = ulItem.children;
+var liArr = (ulItem && ulItem.children) ? ulItem.children : [];
 
 //是否为置顶帖子和普通帖子
 var flag = false;
@@ -38,9 +37,7 @@ for(var i = 0; i < liArr.length; i++){
 	flag = hasClass(liArr[i], 'thread_top_list_folder'); //置顶帖子
 	flag = flag || hasClass(liArr[i], 'j_thread_list'); //普通帖子
 
-	if(flag){
-		continue;
-	}else{  // 其他视为广告，隐藏之
+	if (!flag) {  // 其他视为广告，隐藏之
 		css(liArr[i], 'display', 'none');
 	}
 }
