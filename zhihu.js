@@ -12,3 +12,21 @@ window.onscroll = function(){
 		console.log('哦豁，登录窗口丢了！')
 	}
 }
+
+//.Question-sideColumnAdContainer
+let Question_sideColumnAdContainer = document.getElementsByClassName('Question-sideColumnAdContainer');
+if(Question_sideColumnAdContainer.length > 0){
+	Array.from(Question_sideColumnAdContainer).forEach(ele => ele.style['display']='none');
+}
+
+
+//隐藏动态加载的内容
+function hideDom(){
+	//Pc-card
+	let Pc_card = document.getElementsByClassName('Pc-card');
+	if(Pc_card.length > 0){
+		Array.from(Pc_card).forEach(ele => ele.style['display']='none');
+	}
+}
+let observer = new MutationObserver(hideDom);
+observer.observe(document, { childList: true, subtree: true });

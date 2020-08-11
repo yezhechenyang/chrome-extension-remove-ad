@@ -7,23 +7,27 @@
 	"content_scripts": 
 	[
 		{
+			"matches": ["*://*/*"],
+			"js": ["common.js"],
+			"run_at": "document_start"
+		}
+		,{
 			"matches": ["https://tieba.baidu.com/*"],
-			"js": ["tieba-remove-ad.js"],
+			"js": ["baidu-tieba.js"],
 			"run_at": "document_idle"
 		}
 		,{
-			"matches": ["http://*/*"],
-			"js": ["http-remove-ad.js"],
-			"css": ["http-remove-ad.css"],
+			"matches": ["https://zhidao.baidu.com/*"],
+			"js": ["baidu-zhidao.js"],
 			"run_at": "document_idle"
 		}
 		,{
 			"matches": ["https://www.baidu.com/s*"],
-			"js": ["baidusousuo-remove-ad.js"],
+			"js": ["baidu-search.js"],
 			"run_at": "document_idle"
 		}
 		,{
-			"matches": ["https://blog.csdn.net/*"],
+			"matches": ["*://*.csdn.net/*"],
 			"js": ["csdn-blog.js"],
 			"run_at": "document_idle"
 		}
@@ -32,5 +36,31 @@
 			"js": ["zhihu.js"],
 			"run_at": "document_idle"
 		}
+		,{
+			"matches": ["*://*.jb51.net/*"],
+			"js": ["jb51.js"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["*://*.qq.com/*"],
+			"js": ["qq.js"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["*://*.baidu.com/*"],
+			"js": ["baidu.js"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["*://*.jianshu.com/*"],
+			"js": ["jianshu.js"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["*://*.chinaz.com/*"],
+			"js": ["chinaz.js"],
+			"run_at": "document_idle"
+		}
+
 	]
 }
