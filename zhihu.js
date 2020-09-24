@@ -5,13 +5,15 @@
  */
 
 //解除流氓自动弹窗登录
-window.onscroll = function(){
+let closeLogin	= function(){
 	let closeBtn = document.getElementsByClassName('Modal-closeButton');
 	if(closeBtn && closeBtn[0]){
 		closeBtn[0].click();
 		console.log('哦豁，登录窗口丢了！')
 	}
 }
+window.onscroll = closeLogin;
+window.onload = closeLogin;
 
 //.Question-sideColumnAdContainer
 let Question_sideColumnAdContainer = document.getElementsByClassName('Question-sideColumnAdContainer');

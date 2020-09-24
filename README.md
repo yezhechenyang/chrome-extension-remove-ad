@@ -9,9 +9,9 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  git clone 本项目
+2.  chrome浏览器地址输入：chrome://extensions
+3.  打开开发者模式，加载已解压的扩展程序，选择本项目
 
 #### 使用说明
 

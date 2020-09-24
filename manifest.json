@@ -3,17 +3,26 @@
 	"name": "自定义去广告",
 	"description": "学习Chrome扩展开发，去广告实践！",
 	"version": "0.0.1",
-
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+    	"*://*/*"
+  	],
+	"background": { "scripts": ["js/background.js"] },
 	"content_scripts": 
 	[
 		{
-			"matches": ["*://*/*"],
-			"js": ["common.js"],
-			"run_at": "document_start"
+            "matches": ["http://*/","https://*/","http://*/*","https://*/*"],
+            "js": ["js/config.js", "js/hideElem.js"]
+        }
+		,{
+			"matches": ["https://www.baidu.com/s*"],
+			"js": ["js/baidu-search.js"],
+			"run_at": "document_idle"
 		}
 		,{
 			"matches": ["https://tieba.baidu.com/*"],
-			"js": ["baidu-tieba.js"],
+			"js": ["js/baidu-tieba.js"],
 			"run_at": "document_idle"
 		}
 		,{
@@ -21,11 +30,7 @@
 			"js": ["baidu-zhidao.js"],
 			"run_at": "document_idle"
 		}
-		,{
-			"matches": ["https://www.baidu.com/s*"],
-			"js": ["baidu-search.js"],
-			"run_at": "document_idle"
-		}
+
 		,{
 			"matches": ["*://*.csdn.net/*"],
 			"js": ["csdn-blog.js"],
@@ -37,20 +42,11 @@
 			"run_at": "document_idle"
 		}
 		,{
-			"matches": ["*://*.jb51.net/*"],
-			"js": ["jb51.js"],
-			"run_at": "document_idle"
-		}
-		,{
 			"matches": ["*://*.qq.com/*"],
 			"js": ["qq.js"],
 			"run_at": "document_idle"
 		}
-		,{
-			"matches": ["*://*.baidu.com/*"],
-			"js": ["baidu.js"],
-			"run_at": "document_idle"
-		}
+
 		,{
 			"matches": ["*://*.jianshu.com/*"],
 			"js": ["jianshu.js"],
@@ -61,6 +57,16 @@
 			"js": ["chinaz.js"],
 			"run_at": "document_idle"
 		}
-
+		,{
+			"matches": ["*://*.sina.com.cn/*"],
+			"js": ["sina.js"],
+			"run_at": "document_idle"
+		}
+		,{
+			"matches": ["*://*.youku.com/*"],
+			"js": ["js/youku.js"],
+			"run_at": "document_idle"
+		}
+		
 	]
 }

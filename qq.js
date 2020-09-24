@@ -4,6 +4,19 @@
  * 创建时间：2020-7-12
  */
 
+// 腾讯视频广告缩短至3秒
+var url = window.location.href;
+if(new RegExp("v.qq.com").test(url)) {
+	window.setInterval(function (){
+        let time = document.querySelectorAll(".txp_ad video");
+		if(time.length) {
+			for(let i = 0; i<time.length; i++){
+				time[i].currentTime = 110
+			}
+		}
+    }, 1000);
+}
+
 //隐藏游戏应用 tab_menu_list
 let tab_menu_list = document.querySelectorAll('#tab_menu_list>li');
 if(tab_menu_list.length > 0){

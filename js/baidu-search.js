@@ -28,6 +28,16 @@ function hideDom(){
 			//隐藏
 			hideObj(list[i]);
 		}
+		
+		//再加一层广告过滤
+		if(hasAdText(list[i])){
+			hideCContainerAd(list[i], '成功隐藏广告');
+		}
+		
+		// 隐藏保障企业
+		if(list[i].querySelectorAll('[class*=baozhang]').length > 0){
+			hideCContainerAd(list[i], '成功隐藏保障企业');
+		}
 
 		//关键字过滤搜索结果列表
 		let text = list[i].innerText;
@@ -42,6 +52,24 @@ function hideDom(){
 
 
 
+}
+
+// 搜索结果列表广告隐藏
+function hideCContainerAd(obj, msg){
+	obj.style.display='none';
+	console.log(msg + '，div#'+obj.getAttribute('id')+'.'+obj.getAttribute('class').replace(/\s+/g, '.'));
+}
+
+// 判断是否包含广告文本，一般<span>中的innerText为广告
+function hasAdText(obj){
+	let oSpan = obj.getElementsByTagName("span");
+	if(oSpan && oSpan.length > 0){
+		let spanArr=Array.from(oSpan).reverse();
+		for(let i = 0;i < spanArr.length;i++){
+			if(spanArr[i].innerText == '广告') return true;
+		};
+	}
+	return false;
 }
 
 //第一次加载调用

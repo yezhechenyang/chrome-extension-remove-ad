@@ -3,12 +3,23 @@
  * 作者：叶遮沉阳
  * 创建时间：2020年7月29日
  * 注入时间，可选值： "document_start", "document_end", or "document_idle"
+ * 
  */
+// ,{
+// 	"matches": ["https://tieba.baidu.com/*"],
+// 	"js": ["common.js"],
+// 	"run_at": "document_start",
+// 	"all_frames": true
+// }
 (function(){
 
 
     //隐藏动态加载的内容
     function hideDom(){
+
+        //b_notificationContainer_bop
+        // let notificationContainer = document.getElementById("b_notificationContainer_bop");
+        // if (notificationContainer) notificationContainer.style['display']='none';
 
         //class:header-ads,adsbygoogle,ads_in_hot_article,
         //ad-block,ad-widget Banner_ad
@@ -24,6 +35,10 @@
         if(iframe_ads.length > 0){
             Array.from(iframe_ads).forEach(ele => ele.style['display']='none');
         }
+
+        //div-gpt-ad-1393435113147-0
+        let id_ads = document.querySelectorAll("[id*=-ad-]");
+        if(id_ads) Array.from(id_ads).forEach(ele => ele.style['display']='none');
 
 
         //移除id为adframe的广告容器
